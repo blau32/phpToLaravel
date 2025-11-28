@@ -176,6 +176,24 @@
     echo '<br>';
 
     echo '<br>';
+
+    /*
+    foreach
+    配列の要素を順番に取り出す
+    foreach ($配列(複数形) as $要素(単数形)) {
+        echo $要素;
+    }
+    */
+    foreach ($Ohtani as $data) {
+        echo $data;
+        echo '<br>';
+    }
+
+    foreach ($Ohtani as $data => $value){
+        echo $data . ' is ' . $value;
+        echo '<br>';
+    }
+
     ?>
 </body>
 
