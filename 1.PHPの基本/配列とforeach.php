@@ -175,6 +175,28 @@
     echo $LosAngelsDodgers['Mookie Betts']['position'];
     echo '<br>';
 
+
+    /*
+    foreach()を使って連想配列をまとめて表示する
+    foreach ($配列 as $key => $value) {
+        echo $key . ' : ' . $value . '<br>';
+    }
+    */
+
+    foreach ($LosAngelsDodgers as $baseballteam) {
+        foreach ($baseballteam as $player) {
+        echo $player.'<br>';
+    }}
+    echo '<br>';
+
+    foreach ($Ohtani as $OhtaniInfo) {
+        echo $OhtaniInfo.'<br>';
+    }
+    echo '<br>';
+
+    foreach ($Ohtani as $OhtaniInfo => $profile) {
+        echo $OhtaniInfo .' is '. "$profile".'<br>';
+    }
     echo '<br>';
 
     /*
