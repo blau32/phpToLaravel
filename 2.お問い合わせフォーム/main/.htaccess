@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Enter ID & Password"
+AuthUserFIle C:\xampp\htdocs\phpToLaravel\2.お問い合わせフォーム\main\.htpasswd
+require valid-user
