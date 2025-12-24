@@ -121,7 +121,6 @@
                                <label class="form-check-label" for="gender2">female</label>
                            </div>
                            <!-- 値の保持：isset($_POST['gender'])の部分でまずキーが存在するかチチェックし&& $_POST['gender'] === '1')で値を確認する -->
-                           age
                            <div class="form-group">
                                <label for="age">age</label>
                                <select class="form-control" id="age" name="age">
@@ -218,6 +217,13 @@
 
        <?php if ($pageFlag == 2): ?>
            <?php if ($_POST["csrf"] === $_SESSION['csrfToken']): ?>
+
+            <!-- DB接続 PDO -->
+             <!-- このタイミングで保存 -->
+            <?php require '../main/insert.php';
+            insertContact($_POST);
+            ?>
+            <!-- insert.phpファイルのfunction insertContact($request)の$requestに$_POSTの値が入っている -->
                successfully sent
                <?php unset(
                     $_SESSION['csrfToken']
