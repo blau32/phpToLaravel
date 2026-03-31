@@ -10,7 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p>index</p><br>
-                    <a href="{{ route('contacts.create')}}"> 新規登録</a>
+                    <a class="text-blue-500" href="{{ route('contacts.create')}}"> 新規登録</a><br>
+                    <form class="mb-8" method="get" action="{{route('contacts.index')}}">
+                        <input type="text" name="search" placeholder="検索">
+                        <button class=" text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索する</button>
+                    </form>
 
                     <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                         <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -36,6 +40,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$contacts->links()}}
                 </div>
             </div>
         </div>
