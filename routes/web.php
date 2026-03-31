@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ContactFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('tests/test', [TestController::class, 'index']);
+
+// Route::resource('contacts', ContactFormController::class);
+
+// Route::get('contacts' ,[ContactFormController::class, 'index'])->name('contacts.index');
+// 上のルート情報を下記のように記載し追記しやすいようにする
+Route::prefix('contacts')
+->middleware(['auth'])
+->controller(ContactFormController::class)
+->name('contacts.')
+->group(function () {
+    Route::get('/' , 'index')->name('index');
+    Route::get('/create' , 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{id}', 'show')->name('show');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::post('/{id}', 'update')->name('update');
+    Route::post('/{id}/destroy', 'destroy')->name('destroy');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
-// task_test\resources\views\welcome.blade.php
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
